@@ -1,0 +1,5 @@
+package edu.towson.cis.cosc442.project3;
+
+import org.junit.runner.JUnitCore;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;

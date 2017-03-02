@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>VendingMachineExceptionTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">VendingMachine2Test (Mar 2, 2017 4:25:43 PM)</a> &gt; <a href="../../index.html" class="el_group">VendingMachine2</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">edu.towson.cis.cosc442.project3.vendingmachine</a> &gt; <span class="el_source">VendingMachineExceptionTest.java</span></div><h1>VendingMachineExceptionTest.java</h1><pre class="source lang-java linenums">package edu.towson.cis.cosc442.project3.vendingmachine;
+
+import org.junit.*;
+import static org.junit.Assert.*;
+
+/**
+ * The class &lt;code&gt;VendingMachineExceptionTest&lt;/code&gt; contains tests for the class &lt;code&gt;{@link VendingMachineException}&lt;/code&gt;.
+ *
+ * @generatedBy CodePro at 3/2/17 3:22 PM
+ * @author tedsmithiii
+ * @version $Revision: 1.0 $
+ */
+<span class="fc" id="L13">public class VendingMachineExceptionTest {</span>
+	/**
+	 * Run the VendingMachineException() constructor test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/2/17 3:22 PM
+	 */
+	@Test
+	public void testVendingMachineException_1()
+		throws Exception {
+
+<span class="fc" id="L25">		VendingMachineException result = new VendingMachineException();</span>
+
+		// add additional test code here
+<span class="fc" id="L28">		assertNotNull(result);</span>
+<span class="fc" id="L29">		assertEquals(null, result.getCause());</span>
+<span class="fc" id="L30">		assertEquals(&quot;edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineException&quot;, result.toString());</span>
+<span class="fc" id="L31">		assertEquals(null, result.getMessage());</span>
+<span class="fc" id="L32">		assertEquals(null, result.getLocalizedMessage());</span>
+<span class="fc" id="L33">	}</span>
+
+	/**
+	 * Run the VendingMachineException(String) constructor test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/2/17 3:22 PM
+	 */
+	@Test
+	public void testVendingMachineException_2()
+		throws Exception {
+<span class="fc" id="L45">		String reason = &quot;&quot;;</span>
+
+<span class="fc" id="L47">		VendingMachineException result = new VendingMachineException(reason);</span>
+
+		// add additional test code here
+<span class="fc" id="L50">		assertNotNull(result);</span>
+<span class="fc" id="L51">		assertEquals(null, result.getCause());</span>
+<span class="fc" id="L52">		assertEquals(&quot;edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineException: &quot;, result.toString());</span>
+<span class="fc" id="L53">		assertEquals(&quot;&quot;, result.getMessage());</span>
+<span class="fc" id="L54">		assertEquals(&quot;&quot;, result.getLocalizedMessage());</span>
+<span class="fc" id="L55">	}</span>
+
+	/**
+	 * Perform pre-test initialization.
+	 *
+	 * @throws Exception
+	 *         if the initialization fails for some reason
+	 *
+	 * @generatedBy CodePro at 3/2/17 3:22 PM
+	 */
+	@Before
+	public void setUp()
+		throws Exception {
+		// add additional set up code here
+<span class="fc" id="L69">	}</span>
+
+	/**
+	 * Perform post-test clean-up.
+	 *
+	 * @throws Exception
+	 *         if the clean-up fails for some reason
+	 *
+	 * @generatedBy CodePro at 3/2/17 3:22 PM
+	 */
+	@After
+	public void tearDown()
+		throws Exception {
+		// Add additional tear down code here
+<span class="fc" id="L83">	}</span>
+
+	/**
+	 * Launch the test.
+	 *
+	 * @param args the command line arguments
+	 *
+	 * @generatedBy CodePro at 3/2/17 3:22 PM
+	 */
+	public static void main(String[] args) {
+<span class="nc" id="L93">		new org.junit.runner.JUnitCore().run(VendingMachineExceptionTest.class);</span>
+<span class="nc" id="L94">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>VendingMachine2Test (Mar 2, 2017 4:25:43 PM)</div></body></html>

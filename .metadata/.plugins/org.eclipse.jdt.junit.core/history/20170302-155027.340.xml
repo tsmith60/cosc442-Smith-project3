@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="src" project="VendingMachine2" tests="48" started="48" failures="0" errors="0" ignored="0">
+  <testsuite name="edu.towson.cis.cosc442.project3.vendingmachine.TestAll" incomplete="true">
+    <testsuite name="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true">
+      <testcase name="testInsertMoney_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testInsertMoney_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testMakePurchase_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testMakePurchase_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testMakePurchase_3" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testMakePurchase_4" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testReturnChange_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testVendingMachine_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testVendingMachine_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testRemoveItem_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testRemoveItem_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testRemoveItem_3" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testAddItem_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testAddItem_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testAddItem_3" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testGetItem_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testGetItem_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+      <testcase name="testGetBalance_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" incomplete="true"/>
+    </testsuite>
+    <testsuite name="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItemTest" incomplete="true">
+      <testcase name="testVendingMachineItem_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItemTest" incomplete="true"/>
+      <testcase name="testVendingMachineItem_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItemTest" incomplete="true"/>
+      <testcase name="testGetPrice_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItemTest" incomplete="true"/>
+      <testcase name="testGetName_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItemTest" incomplete="true"/>
+    </testsuite>
+    <testsuite name="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineExceptionTest" incomplete="true">
+      <testcase name="testVendingMachineException_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineExceptionTest" incomplete="true"/>
+      <testcase name="testVendingMachineException_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineExceptionTest" incomplete="true"/>
+    </testsuite>
+  </testsuite>
+  <testsuite name="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItemTest" time="0.0">
+    <testcase name="testVendingMachineItem_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItemTest" time="0.0"/>
+    <testcase name="testVendingMachineItem_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItemTest" time="0.0"/>
+    <testcase name="testGetPrice_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItemTest" time="0.0"/>
+    <testcase name="testGetName_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItemTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.001">
+    <testcase name="testInsertMoney_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testInsertMoney_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testMakePurchase_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testMakePurchase_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testMakePurchase_3" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testMakePurchase_4" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testReturnChange_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.001"/>
+    <testcase name="testVendingMachine_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testVendingMachine_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testRemoveItem_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testRemoveItem_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testRemoveItem_3" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testAddItem_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testAddItem_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testAddItem_3" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testGetItem_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testGetItem_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+    <testcase name="testGetBalance_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineExceptionTest" time="0.0">
+    <testcase name="testVendingMachineException_1" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineExceptionTest" time="0.0"/>
+    <testcase name="testVendingMachineException_2" classname="edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineExceptionTest" time="0.0"/>
+  </testsuite>
+</testrun>

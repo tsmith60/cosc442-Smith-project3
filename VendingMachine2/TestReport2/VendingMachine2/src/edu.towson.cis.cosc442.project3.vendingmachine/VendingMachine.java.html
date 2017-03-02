@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>VendingMachine.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">edu.towson.cis.cosc442.project3.vendingmachine (2) (Mar 2, 2017 4:28:44 PM)</a> &gt; <a href="../../index.html" class="el_group">VendingMachine2</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">edu.towson.cis.cosc442.project3.vendingmachine</a> &gt; <span class="el_source">VendingMachine.java</span></div><h1>VendingMachine.java</h1><pre class="source lang-java linenums">package edu.towson.cis.cosc442.project3.vendingmachine;
+
+
+/**
+ * 
+ * This class represents the vending machine module. You can put items in the vending machine,
+ * remove items from the vending machine, purchase items from the vending machine, and even get your 
+ * change back.  The vending machine has 4 slots and each slot holds 1 item.  Once that item is bought,
+ * that slot is empty.  The slots are referred to by their &quot;code&quot;, which is a letter.  These codes are
+ * &quot;A&quot; for the slot at index 0, &quot;B&quot; for the slot at index 1, &quot;C&quot; for the slot at index 2, and &quot;D&quot;
+ * for the slot at index 3.  
+ */
+public class VendingMachine {
+
+	// The number of slots in the vending machine
+	public static final int NUM_SLOTS = 4;
+
+	// The code for the &quot;A&quot; slot
+	public static final String A_CODE = &quot;A&quot;;
+
+	// The code for the &quot;B&quot; slot
+	public static final String B_CODE = &quot;B&quot;;
+	
+	// The code for the &quot;C&quot; slot
+	public static final String C_CODE = &quot;C&quot;;
+	
+	// The code for the &quot;D&quot; slot
+	public static final String D_CODE = &quot;D&quot;;
+	
+	// The initial balance of the vending machine
+	private static final double INITIAL_BALANCE = 0;
+
+	// Error message for invalid code
+	private static final String INVALID_CODE_MESSAGE = &quot;Invalid code for vending machine item&quot;;
+
+	// Error message for amounts &lt; 0
+	private static final String INVALID_AMOUNT_MESSAGE = &quot;Invalid amount.  Amount must be &gt;= 0&quot;;
+	
+	// Slot part of error message
+	private static final String SLOT_MESSAGE = &quot;Slot &quot;;
+	
+	// Already occupied part of error message
+	private static final String ALREADY_OCCUPIED_MESSAGE = &quot; already occupied&quot;;
+	
+	// &quot;is empty&quot; part of error message
+	private static final String IS_EMPTY_MESSAGE = &quot; is empty -- cannot remove item&quot;;
+	
+	// The amount of money in the vending machine currently
+	protected double balance;
+
+	// Array items in the vending machine
+	private VendingMachineItem[] itemArray;
+
+	/**
+	 * Default constructor for the vending machine. It sets all the entries in
+	 * the itemArray to be null, corresponding to an empty vending machine.
+	 * Postcondition: all entries in itemArray are null, balance set to be 0
+	 */
+<span class="fc" id="L59">	public VendingMachine() {</span>
+<span class="fc" id="L60">		itemArray = new VendingMachineItem[NUM_SLOTS];</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">		for (int i = 0; i &lt; NUM_SLOTS; i++) {</span>
+<span class="fc" id="L62">				itemArray[i] = null;</span>
+		}
+<span class="fc" id="L64">		this.balance = INITIAL_BALANCE;</span>
+<span class="fc" id="L65">	}</span>
+
+	/**
+	 * Gets the slot index given the code for that slot.  Specifically, the codes are &quot;A&quot; for
+	 * slot index 0, &quot;B&quot; for slot index 1, &quot;C&quot; for slot index 2 and &quot;D&quot; for slot index 3.
+	 * @param code The code for the slot.
+	 * @return The slot index 
+	 * @throws VendingMachineException
+	 */
+	private int getSlotIndex(String code) throws VendingMachineException {
+<span class="fc bfc" id="L75" title="All 2 branches covered.">		if( code.equals(A_CODE)) {</span>
+<span class="fc" id="L76">			return 0;</span>
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">		} else if ( code.equals(B_CODE)) {</span>
+<span class="nc" id="L78">			return 1;</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">		} else if ( code.equals(C_CODE)) {</span>
+<span class="nc" id="L80">			return 2;</span>
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">		} else if ( code.equals(D_CODE)) {</span>
+<span class="nc" id="L82">			return 3;</span>
+		} else {
+<span class="fc" id="L84">			throw new VendingMachineException(VendingMachine.INVALID_CODE_MESSAGE);</span>
+		}
+	}
+
+	/**
+	 * Adds an item to the vending machine at the slot specified by the code.
+	 * 
+	 * Precondition: The slot specified by the code must be empty
+	 * Postcondition: The item is now at the slot specified by the code
+	 * @param item
+	 *            The vending machine item object to add to the vending machine
+	 * @param code
+	 *            The code of where this item should be in the vending machine
+	 * @throws VendingMachineException under the following conditions:
+	 * 1. If you add an item to a slot that is already occupied. 
+	 * 2. If you add an item with an invalid code
+	 */
+	public void addItem(VendingMachineItem item, String code)
+			throws VendingMachineException {
+<span class="fc" id="L103">		int slotIndex = getSlotIndex(code);</span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">		if (itemArray[slotIndex] != null) {</span>
+<span class="nc" id="L105">			throw new VendingMachineException(SLOT_MESSAGE + code</span>
+<span class="nc" id="L106">					+ ALREADY_OCCUPIED_MESSAGE);</span>
+		} else {
+<span class="fc" id="L108">			itemArray[slotIndex] = item;</span>
+		}
+<span class="fc" id="L110">	}</span>
+
+	/**
+	 * Gets the item occupying the slot with the given code.
+	 * @param code The code for the the slot in the vending machine eg. &quot;A&quot;
+	 * @return The item occupying the slot with the given code
+	 * @throws VendingMachineException if the code is invalid
+	 */
+	protected VendingMachineItem getItem(String code) throws VendingMachineException {
+<span class="fc" id="L119">		int slotIndex = getSlotIndex(code);</span>
+<span class="fc" id="L120">		return itemArray[slotIndex];</span>
+	}
+	
+	/**
+	 * Removes an item from the vending machine given its code.
+	 * Postcondition: If the code slot is not empty, the item in that slot is removed.
+	 * @param code The code eg. &quot;A&quot; of the item in the vending machine
+	 * @return The item occupying the slot with the given code.
+	 * @throws VendingMachineException If the slot at the specified code is empty and if the code is invalid
+	 */
+	public VendingMachineItem removeItem(String code) throws VendingMachineException {
+<span class="fc" id="L131">		int slotIndex = getSlotIndex(code);</span>
+<span class="fc" id="L132">		VendingMachineItem item = itemArray[slotIndex];</span>
+<span class="fc" id="L133">		itemArray[slotIndex] = null;</span>
+<span class="pc bpc" id="L134" title="1 of 2 branches missed.">		if ( item == null) {</span>
+<span class="fc" id="L135">			throw new VendingMachineException(SLOT_MESSAGE + code + IS_EMPTY_MESSAGE);</span>
+		}
+<span class="nc" id="L137">		return item;</span>
+	}
+
+	/**
+	 * Function to put money into the vending machine.  
+	 * Precondition: amount &gt;= 0
+	 * Postcondition: balance is now the previous balance + amount.
+	 * @param amount The amount of money to put in the vending machine
+	 * @throws VendingMachineException Throws a VendingMachineException if the amount is &lt; 0 
+	 */
+	public void insertMoney(double amount) throws VendingMachineException {
+<span class="fc bfc" id="L148" title="All 2 branches covered.">		if( amount &lt; 0 )</span>
+<span class="fc" id="L149">			throw new VendingMachineException(VendingMachine.INVALID_AMOUNT_MESSAGE);</span>
+<span class="fc" id="L150">		this.balance += amount;</span>
+<span class="fc" id="L151">	}</span>
+
+	/**
+	 * Returns the amount of change the user has in the vending machine.  Note that this simply
+	 * returns the amount and does not actually give back the change to the user.
+	 * Precondition: balance &gt;= 0; Note that the vending machine should start with a 0 balance.
+	 * Postcondition: the balance is &gt;= 0 and remains the same as it was before the function was called.
+	 * @return The balance in the vending machine
+	 */
+	public double getBalance() {
+<span class="fc" id="L161">		return this.balance;</span>
+	}
+	
+	/**
+	 * This function attempts to purchase the item with the given code from the vending machine.
+	 * Precondition: balance &gt;= 0
+	 * Postcondition: The amount of the item is subtracted from the balance
+	 * @param code The code for the item from the vending machine
+	 * @return Returns true if there is enough money to make the purchase.  Returns false if not enough money is put
+	 * into the vending machine to make the purchase.  Also returns false if the code is for an empty slot.
+	 */
+	public boolean makePurchase(String code) {
+<span class="fc" id="L173">		boolean returnCode = false;</span>
+<span class="fc" id="L174">		VendingMachineItem item = getItem(code);</span>
+<span class="pc bpc" id="L175" title="3 of 4 branches missed.">		if(( item != null ) &amp;&amp; ( this.balance &gt;= item.getPrice() )) {</span>
+<span class="nc" id="L176">			removeItem(code);</span>
+<span class="nc" id="L177">			this.balance -= item.getPrice();</span>
+<span class="nc" id="L178">			returnCode = true;</span>
+		}
+<span class="fc" id="L180">		return returnCode;</span>
+	}
+
+	/**
+	 * Returns the amount of change in the machine and sets the balance to 0.
+	 * Precondition: balance &gt;= 0
+	 * Postcondition: balance = 0
+	 * @return The amount of change in the machine
+	 */
+	public double returnChange() {
+<span class="fc" id="L190">		double change = this.balance;</span>
+<span class="fc" id="L191">		this.balance = 0;</span>
+<span class="fc" id="L192">		return change;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>edu.towson.cis.cosc442.project3.vendingmachine (2) (Mar 2, 2017 4:28:44 PM)</div></body></html>
