@@ -1,0 +1,3 @@
+Bugs Txt
+
+Did not find any that disagreed with the performance in javadocs.
