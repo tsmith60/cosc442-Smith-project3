@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>VendingMachineTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">edu.towson.cis.cosc442.project3.vendingmachine (Mar 2, 2017 2:53:42 PM)</a> &gt; <a href="../../index.html" class="el_group">VendingMachine</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">edu.towson.cis.cosc442.project3.vendingmachine</a> &gt; <span class="el_source">VendingMachineTest.java</span></div><h1>VendingMachineTest.java</h1><pre class="source lang-java linenums">package edu.towson.cis.cosc442.project3.vendingmachine;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+<span class="fc" id="L9">public class VendingMachineTest {</span>
+	VendingMachine vm;
+	VendingMachineItem vmIA;
+	VendingMachineItem vmIB;
+	VendingMachineItem vmIC;
+	VendingMachineItem vmID;
+	@Before
+	public void setUp() throws Exception {
+<span class="fc" id="L17">		vm = new VendingMachine();</span>
+<span class="fc" id="L18">		vmIA = new VendingMachineItem(&quot;Skittles&quot;,1.75);</span>
+<span class="fc" id="L19">		vmIB = new VendingMachineItem(&quot;Donuts&quot;,2.50);</span>
+<span class="fc" id="L20">		vmIC = new VendingMachineItem(&quot;Gum&quot;, 1.25);</span>
+<span class="fc" id="L21">		vmID = new VendingMachineItem(&quot;Apple&quot;,.75);</span>
+<span class="fc" id="L22">	}</span>
+
+	@After
+	public void tearDown() throws Exception {
+<span class="fc" id="L26">		vm = null;</span>
+<span class="fc" id="L27">		vmIA = null;</span>
+<span class="fc" id="L28">		vmIB = null;</span>
+<span class="fc" id="L29">		vmIC = null;</span>
+<span class="fc" id="L30">		vmID = null;</span>
+<span class="fc" id="L31">	}</span>
+
+	@Test
+	public void testAddItem() {
+		
+		//Precondition to make sure the item array is empty
+	
+<span class="fc" id="L38">		assertNull(vm.getItem(&quot;A&quot;));</span>
+<span class="fc" id="L39">		assertNull(vm.getItem(&quot;B&quot;));</span>
+<span class="fc" id="L40">		assertNull(vm.getItem(&quot;C&quot;));</span>
+<span class="fc" id="L41">		assertNull(vm.getItem(&quot;D&quot;));</span>
+		
+		//Added each item to ensure that there is no issue associated with the specific item codes to the vending machine
+<span class="fc" id="L44">		vm.addItem(vmIA, &quot;A&quot;);</span>
+<span class="fc" id="L45">		assertEquals(vm.getItem(&quot;A&quot;).getName(),&quot;Skittles&quot;);</span>
+<span class="fc" id="L46">		vm.addItem(vmIB, &quot;B&quot;);</span>
+<span class="fc" id="L47">		assertEquals(vm.getItem(&quot;B&quot;).getName(),&quot;Donuts&quot;);</span>
+<span class="fc" id="L48">		vm.addItem(vmIC, &quot;C&quot;);</span>
+<span class="fc" id="L49">		assertEquals(vm.getItem(&quot;C&quot;).getName(),&quot;Gum&quot;);</span>
+<span class="fc" id="L50">		vm.addItem(vmID, &quot;D&quot;);</span>
+<span class="fc" id="L51">		assertEquals(vm.getItem(&quot;D&quot;).getName(),&quot;Apple&quot;);</span>
+		
+		
+		
+		//Tests below will cause exception errors.
+		//Add an item to a code that is already occupied , makes the exceptiom go off
+		//vm.addItem(vmID, &quot;A&quot;);
+		
+		//Add an item to code that does not exist,
+		//vm.addItem(vmIA, &quot;G&quot;);
+<span class="fc" id="L61">	}</span>
+	@Test
+	public void testAddOccItem(){
+		//Testing the exception by adding an item to a spot that is already occupied
+<span class="fc" id="L65">		vm.addItem(vmID, &quot;D&quot;);</span>
+<span class="nc" id="L66">		vm.addItem(vmID, &quot;D&quot;);</span>
+		
+<span class="nc" id="L68">	}</span>
+	@Test
+	public void testAddBadCodeItem(){
+		//Testing the exception by trying to add an item to a code that doesn't exist
+<span class="nc" id="L72">		vm.addItem(vmID, &quot;E&quot;);</span>
+		
+		
+<span class="nc" id="L75">	}</span>
+
+	@Test
+	public void testRemoveItem() {
+		
+		//This adds each item to the list
+		//Removes the item and checks that the returned item is the actual item at the code
+		//Tries to access the item to see if the remove item completed its job
+<span class="fc" id="L83">		vm.addItem(vmIA, &quot;A&quot;);</span>
+<span class="fc" id="L84">		assertEquals(vm.removeItem(&quot;A&quot;).getName(),vmIA.getName()); //Testing that the returned value is the item deleted</span>
+		
+<span class="fc" id="L86">		assertNull(vm.getItem(&quot;A&quot;));</span>
+<span class="fc" id="L87">		vm.addItem(vmIB, &quot;B&quot;);</span>
+<span class="fc" id="L88">		assertEquals(vm.removeItem(&quot;B&quot;).getName(),vmIB.getName()); //Testing that the returned value is the item deleted</span>
+<span class="fc" id="L89">		assertNull(vm.getItem(&quot;B&quot;));</span>
+		
+<span class="fc" id="L91">		vm.addItem(vmIC, &quot;C&quot;);</span>
+<span class="fc" id="L92">		assertEquals(vm.removeItem(&quot;C&quot;).getName(),vmIC.getName()); //Testing that the returned value is the item deleted</span>
+<span class="fc" id="L93">		assertNull(vm.getItem(&quot;C&quot;));</span>
+		
+<span class="fc" id="L95">		vm.addItem(vmID, &quot;D&quot;);</span>
+<span class="fc" id="L96">		assertEquals(vm.removeItem(&quot;D&quot;).getName(),vmID.getName()); //Testing that the returned value is the item deleted</span>
+<span class="fc" id="L97">		assertNull(vm.getItem(&quot;D&quot;));</span>
+		
+		//Tests below will cause exception errors.
+		
+		//Try to remove an item that already does not exist
+		//vm.removeItem(&quot;D&quot;);
+		
+		
+		//Try to access a code that does not exist
+		//vm.removeItem(&quot;G&quot;);
+		
+<span class="fc" id="L108">	}</span>
+	@Test
+	public void testRemoveEmptyItem(){
+		//Will run to test the exception for trying to remove an empty item
+<span class="nc" id="L112">		vm.removeItem(&quot;D&quot;);</span>
+		
+		
+<span class="nc" id="L115">	}</span>
+
+	@Test
+	public void testInsertMoney() {
+		//Precondition
+<span class="fc" id="L120">		assertEquals(vm.getBalance(),0.00,.001);</span>
+		
+		//Testing the insertion of money. 
+		//Insert $10, and if I check the balance it should say 10
+<span class="fc" id="L124">		vm.insertMoney(10.00);</span>
+<span class="fc" id="L125">		assertEquals(vm.getBalance(),10.00,.001);</span>
+		
+		
+		//Tests below will cause exception errors.
+		
+		//try to insert negative money
+		//vm.insertMoney(-10.00);
+<span class="fc" id="L132">	}</span>
+	@Test
+	public void testInsertNegativeMoney(){
+		//Will run to test the exception for trying to insert a negative amount of moeny
+<span class="nc" id="L136">		vm.insertMoney(-10.00);</span>
+		
+		
+<span class="nc" id="L139">	}</span>
+	@Test
+	public void testGetBalance() {
+		//Precondition
+<span class="fc" id="L143">				assertEquals(vm.getBalance(),0.00,.001);</span>
+				
+				//Testing the insertion of money. 
+				//Insert $10, and if I check the balance it should say 10, then 20, and 30
+<span class="fc" id="L147">				vm.insertMoney(10.00);</span>
+<span class="fc" id="L148">				assertEquals(vm.getBalance(),10.00,.001);</span>
+				
+<span class="fc" id="L150">				vm.insertMoney(10.00);</span>
+<span class="fc" id="L151">				assertEquals(vm.getBalance(),20.00,.001);</span>
+<span class="fc" id="L152">				vm.insertMoney(10.00);</span>
+<span class="fc" id="L153">				assertEquals(vm.getBalance(),30.00,.001);</span>
+<span class="fc" id="L154">	}</span>
+
+	@Test
+	public void testMakePurchase() {
+<span class="fc" id="L158">		vm.addItem(vmIA, &quot;A&quot;);</span>
+<span class="fc" id="L159">		vm.addItem(vmIC, &quot;C&quot;);</span>
+		
+		//Try to buy something with no money
+<span class="fc" id="L162">		assertEquals(vm.makePurchase(&quot;A&quot;),false);</span>
+<span class="fc" id="L163">		assertEquals(vm.makePurchase(&quot;B&quot;),false);</span>
+<span class="fc" id="L164">		assertEquals(vm.makePurchase(&quot;C&quot;),false);</span>
+<span class="fc" id="L165">		assertEquals(vm.makePurchase(&quot;D&quot;),false);</span>
+		//Add money and try to buy an item that exists, doesn't exist, exist
+<span class="fc" id="L167">		vm.insertMoney(3.25);</span>
+<span class="fc" id="L168">		assertEquals(vm.makePurchase(&quot;A&quot;),true);</span>
+<span class="fc" id="L169">		assertEquals(vm.makePurchase(&quot;B&quot;),false);</span>
+<span class="fc" id="L170">		assertEquals(vm.makePurchase(&quot;C&quot;),true);</span>
+		
+		//With leftover change try to make a purchase
+<span class="fc" id="L173">		assertEquals(vm.makePurchase(&quot;A&quot;),false);</span>
+<span class="fc" id="L174">		assertEquals(vm.makePurchase(&quot;B&quot;),false);</span>
+<span class="fc" id="L175">		assertEquals(vm.makePurchase(&quot;C&quot;),false);</span>
+<span class="fc" id="L176">		assertEquals(vm.makePurchase(&quot;D&quot;),false);</span>
+		
+		
+		//Tests below will cause exception errors.
+		
+		//Tests what will happen if you try using a code that doesn't exist
+		//assertEquals(vm.makePurchase(&quot;G&quot;),false);
+<span class="fc" id="L183">	}</span>
+
+	@Test
+	public void testReturnChange() {
+		//Test it before money is inserted
+<span class="fc" id="L188">		assertEquals(vm.returnChange(),0.00,.001);</span>
+		//Test after money is inserted
+<span class="fc" id="L190">		vm.insertMoney(3.25);</span>
+<span class="fc" id="L191">		assertEquals(vm.returnChange(),3.25,.001);</span>
+<span class="fc" id="L192">		assertEquals(vm.getBalance(),0.00,.001);</span>
+		//Test after money is inserted and an blank item is attempted to be purchased
+<span class="fc" id="L194">		vm.insertMoney(3.25);</span>
+<span class="fc" id="L195">		vm.makePurchase(&quot;A&quot;);</span>
+<span class="fc" id="L196">		assertEquals(vm.returnChange(),3.25,.001);</span>
+<span class="fc" id="L197">		assertEquals(vm.getBalance(),0.00,.001);</span>
+		//Test after money is inserted and an item is purchased
+<span class="fc" id="L199">		vm.insertMoney(3.25);</span>
+<span class="fc" id="L200">		vm.addItem(vmIA, &quot;A&quot;);</span>
+<span class="fc" id="L201">		vm.makePurchase(&quot;A&quot;);</span>
+<span class="fc" id="L202">		assertEquals(vm.returnChange(),1.50,.001);</span>
+<span class="fc" id="L203">		assertEquals(vm.getBalance(),0.00,.001);</span>
+		//Test after money is inserted and two items are purchased
+<span class="fc" id="L205">		vm.insertMoney(3.25);</span>
+<span class="fc" id="L206">		vm.addItem(vmIA, &quot;A&quot;);</span>
+<span class="fc" id="L207">		vm.makePurchase(&quot;A&quot;);</span>
+<span class="fc" id="L208">		vm.addItem(vmIC, &quot;C&quot;);</span>
+<span class="fc" id="L209">		vm.makePurchase(&quot;C&quot;);</span>
+<span class="fc" id="L210">		assertEquals(vm.returnChange(),0.25,.001);</span>
+<span class="fc" id="L211">		assertEquals(vm.getBalance(),0.00,.001);</span>
+<span class="fc" id="L212">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>edu.towson.cis.cosc442.project3.vendingmachine (Mar 2, 2017 2:53:42 PM)</div></body></html>

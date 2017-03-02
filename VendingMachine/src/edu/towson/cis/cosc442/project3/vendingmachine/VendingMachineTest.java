@@ -34,10 +34,11 @@ public class VendingMachineTest {
 	public void testAddItem() {
 		
 		//Precondition to make sure the item array is empty
-		if(vm.getItem("A")!=null||vm.getItem("B")!=null||vm.getItem("C")!=null||vm.getItem("D")!=null){
-			
-			fail("The item in the list should be empty after constructor call");
-		}
+	
+		assertNull(vm.getItem("A"));
+		assertNull(vm.getItem("B"));
+		assertNull(vm.getItem("C"));
+		assertNull(vm.getItem("D"));
 		
 		//Added each item to ensure that there is no issue associated with the specific item codes to the vending machine
 		vm.addItem(vmIA, "A");
@@ -49,12 +50,28 @@ public class VendingMachineTest {
 		vm.addItem(vmID, "D");
 		assertEquals(vm.getItem("D").getName(),"Apple");
 		
+		
+		
 		//Tests below will cause exception errors.
 		//Add an item to a code that is already occupied , makes the exceptiom go off
 		//vm.addItem(vmID, "A");
 		
 		//Add an item to code that does not exist,
 		//vm.addItem(vmIA, "G");
+	}
+	@Test
+	public void testAddOccItem(){
+		//Testing the exception by adding an item to a spot that is already occupied
+		vm.addItem(vmID, "D");
+		vm.addItem(vmID, "D");
+		
+	}
+	@Test
+	public void testAddBadCodeItem(){
+		//Testing the exception by trying to add an item to a code that doesn't exist
+		vm.addItem(vmID, "E");
+		
+		
 	}
 
 	@Test
@@ -65,27 +82,19 @@ public class VendingMachineTest {
 		//Tries to access the item to see if the remove item completed its job
 		vm.addItem(vmIA, "A");
 		assertEquals(vm.removeItem("A").getName(),vmIA.getName()); //Testing that the returned value is the item deleted
-		if(vm.getItem("A")!=null){
-			fail("The item A is still in the list should be empty after constructor call");
-		}
 		
+		assertNull(vm.getItem("A"));
 		vm.addItem(vmIB, "B");
 		assertEquals(vm.removeItem("B").getName(),vmIB.getName()); //Testing that the returned value is the item deleted
-		if(vm.getItem("B")!=null){
-			fail("The item B is still in the list should be empty after constructor call");
-		}
+		assertNull(vm.getItem("B"));
 		
 		vm.addItem(vmIC, "C");
 		assertEquals(vm.removeItem("C").getName(),vmIC.getName()); //Testing that the returned value is the item deleted
-		if(vm.getItem("C")!=null){
-			fail("The item C is still in the list should be empty after constructor call");
-		}
+		assertNull(vm.getItem("C"));
 		
 		vm.addItem(vmID, "D");
 		assertEquals(vm.removeItem("D").getName(),vmID.getName()); //Testing that the returned value is the item deleted
-		if(vm.getItem("D")!=null){
-			fail("The item D is still in the list should be empty after constructor call");
-		}
+		assertNull(vm.getItem("D"));
 		
 		//Tests below will cause exception errors.
 		
@@ -95,6 +104,13 @@ public class VendingMachineTest {
 		
 		//Try to access a code that does not exist
 		//vm.removeItem("G");
+		
+	}
+	@Test
+	public void testRemoveEmptyItem(){
+		//Will run to test the exception for trying to remove an empty item
+		vm.removeItem("D");
+		
 		
 	}
 
@@ -114,7 +130,13 @@ public class VendingMachineTest {
 		//try to insert negative money
 		//vm.insertMoney(-10.00);
 	}
-
+	@Test
+	public void testInsertNegativeMoney(){
+		//Will run to test the exception for trying to insert a negative amount of moeny
+		vm.insertMoney(-10.00);
+		
+		
+	}
 	@Test
 	public void testGetBalance() {
 		//Precondition

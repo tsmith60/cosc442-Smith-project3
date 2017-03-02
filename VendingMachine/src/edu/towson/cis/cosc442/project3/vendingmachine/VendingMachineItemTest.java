@@ -31,6 +31,13 @@ public class VendingMachineItemTest {
 		
 		vmI = new VendingMachineItem("ZeroSip",0);
 		assertEquals(vmI.getPrice(),0,.001);
+		
+		//vmI = null;
+		
+		//Tests the exception for using the constructor with a negative price
+		vmI = new VendingMachineItem("NegSip",-3);
+		//assertNull(vmI);
+		//assertEquals(vmI.getPrice(),0,.001);
 	}
 
 	/**

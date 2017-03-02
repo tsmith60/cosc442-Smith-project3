@@ -1,0 +1,64 @@
+/**
+ * 
+ */
+package edu.towson.cis.cosc442.project3.vendingmachine;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * @author tedsmithiii
+ *
+ */
+public class VendingMachineItemTest {
+
+	VendingMachineItem vmI;
+
+
+	
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItem#VendingMachineItem(java.lang.String, double)}.
+	 */
+	@Test
+	public void testVendingMachineItem() {
+		//I initialized the VendingMachineItem class, and then ran the getter methods to compare the values
+		vmI = new VendingMachineItem("Skittles",1.75);
+		assertEquals(vmI.getName(),"Skittles");
+		assertEquals(vmI.getPrice(),1.75,.001);
+		
+		vmI = new VendingMachineItem("ZeroSip",0);
+		assertEquals(vmI.getPrice(),0,.001);
+		
+		vmI = null;
+		//vmI = new VendingMachineItem("NegSip",-3);
+		//assertNull(vmI);
+		//assertEquals(vmI.getPrice(),0,.001);
+	}
+
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItem#getName()}.
+	 */
+	@Test
+	public void testGetName() {
+		//Initialize a VendingMachineItem with the name Skittles
+		//Then i run a comparison to make sure the getter is equal to Skittles
+		vmI = new VendingMachineItem("Skittles",1.75);
+		assertEquals(vmI.getName(),"Skittles");
+	
+	}
+
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItem#getPrice()}.
+	 */
+	@Test
+	public void testGetPrice() {
+		//Initialize a VendingMachineItem with the price 1.75
+	//Then i run a comparison to make sure the getter is equal to 1.75
+		vmI = new VendingMachineItem("Skittles",1.75);
+		assertEquals(vmI.getPrice(),1.75,.001);
+	}
+
+}

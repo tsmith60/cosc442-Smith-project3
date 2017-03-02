@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>VendingMachineItemTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">edu.towson.cis.cosc442.project3.vendingmachine (Mar 2, 2017 2:53:42 PM)</a> &gt; <a href="../../index.html" class="el_group">VendingMachine</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">edu.towson.cis.cosc442.project3.vendingmachine</a> &gt; <span class="el_source">VendingMachineItemTest.java</span></div><h1>VendingMachineItemTest.java</h1><pre class="source lang-java linenums">/**
+ * 
+ */
+package edu.towson.cis.cosc442.project3.vendingmachine;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * @author tedsmithiii
+ *
+ */
+<span class="fc" id="L16">public class VendingMachineItemTest {</span>
+
+	VendingMachineItem vmI;
+
+
+	
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItem#VendingMachineItem(java.lang.String, double)}.
+	 */
+	@Test
+	public void testVendingMachineItem() {
+		//I initialized the VendingMachineItem class, and then ran the getter methods to compare the values
+<span class="fc" id="L28">		vmI = new VendingMachineItem(&quot;Skittles&quot;,1.75);</span>
+<span class="fc" id="L29">		assertEquals(vmI.getName(),&quot;Skittles&quot;);</span>
+<span class="fc" id="L30">		assertEquals(vmI.getPrice(),1.75,.001);</span>
+		
+<span class="fc" id="L32">		vmI = new VendingMachineItem(&quot;ZeroSip&quot;,0);</span>
+<span class="fc" id="L33">		assertEquals(vmI.getPrice(),0,.001);</span>
+		
+		//vmI = null;
+		
+		//Tests the exception for using the constructor with a negative price
+<span class="nc" id="L38">		vmI = new VendingMachineItem(&quot;NegSip&quot;,-3);</span>
+		//assertNull(vmI);
+		//assertEquals(vmI.getPrice(),0,.001);
+<span class="nc" id="L41">	}</span>
+
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItem#getName()}.
+	 */
+	@Test
+	public void testGetName() {
+		//Initialize a VendingMachineItem with the name Skittles
+		//Then i run a comparison to make sure the getter is equal to Skittles
+<span class="fc" id="L50">		vmI = new VendingMachineItem(&quot;Skittles&quot;,1.75);</span>
+<span class="fc" id="L51">		assertEquals(vmI.getName(),&quot;Skittles&quot;);</span>
+	
+<span class="fc" id="L53">	}</span>
+
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItem#getPrice()}.
+	 */
+	@Test
+	public void testGetPrice() {
+		//Initialize a VendingMachineItem with the price 1.75
+	//Then i run a comparison to make sure the getter is equal to 1.75
+<span class="fc" id="L62">		vmI = new VendingMachineItem(&quot;Skittles&quot;,1.75);</span>
+<span class="fc" id="L63">		assertEquals(vmI.getPrice(),1.75,.001);</span>
+<span class="fc" id="L64">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>edu.towson.cis.cosc442.project3.vendingmachine (Mar 2, 2017 2:53:42 PM)</div></body></html>

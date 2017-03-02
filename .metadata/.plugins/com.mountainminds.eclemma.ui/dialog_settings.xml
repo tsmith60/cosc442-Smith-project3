@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="SessionExportWizard">
+		<item value="HTML" key="SessionExportPage1.format"/>
+		<list key="SessionExportPage1.destinations">
+			<item value="/Users/tedsmithiii/Documents/School-Related/Spring-2017/COSC-442-001/Project 3/cosc442-Smith-project3/VendingMachine/TestReport"/>
+			<item value="/Users/tedsmithiii/Documents/School-Related/Spring-2017/COSC-442-001/Project 3/cosc442-Smith-project3/VendingMachine"/>
+		</list>
+	</section>
+</section>
